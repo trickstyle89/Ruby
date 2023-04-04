@@ -1,33 +1,20 @@
-require 'player.rb'
-
-module questions
-    class questions
-
-attr_accessor :answer
-
-   def initialize(answer)
-    num1 = rand(1..20)
-    num2 = rand(1..20)
-    @answer = num1 + num2
-   end
-
-def check_answer(player_answer)
-
-    if @answer == player_answer
-        puts "That is correct!"
-        return true
-    else 
-        puts "Wrong! The answer was #{@answer}"
-        return false
+class Question
+    attr_reader :num1, :num2
+  
+    def initialize
+      generate_numbers
     end
-
-    def display_question
-        puts "What is the sum of #{num1} + #{num2} ? "
+  
+    def generate_numbers
+      @num1 = rand(1..20)
+      @num2 = rand(1..20)
     end
-end
-
-
-
-
-
-
+  
+    def generate_question
+      "What does #{num1} plus #{num2} equal?"
+    end
+  
+    def check_answer(answer)
+      answer == num1 + num2
+    end
+  end    
